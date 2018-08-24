@@ -15,14 +15,14 @@ public class LoopTaskG implements Runnable {
 			try {
 				Thread.sleep(3000);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println("*****[" + Thread.currentThread().getName() + "]<" + taskId + "> Sleep Interrupted. Cancelling ****");
+				break;
 			}
 			 
 			
 			
 		}
-		System.out.println("*****[" + Thread.currentThread().getName() + "]<" + taskId + "> Done ****");
+		
 	}
 
 	 
