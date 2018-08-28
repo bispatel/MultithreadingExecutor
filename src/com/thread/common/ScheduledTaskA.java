@@ -26,7 +26,7 @@ public class ScheduledTaskA extends TimerTask {
 		Date scheduledForRunningTime = new Date(super.scheduledExecutionTime());
 		String currentThread = Thread.currentThread().getName();
 		System.out.println("#####[" + currentThread + "] <" + taskId + "> SCHEDULED TO RUN AT:"
-				+ dateFormat.format(scheduledForRunningTime) + ", ACTUALLy STARTED AT:" + dateFormat.format(startTime)+" #####");
+				+ dateFormat.format(scheduledForRunningTime) + ", ACTUALLY STARTED AT:" + dateFormat.format(startTime)+" #####");
 
 
 		try {

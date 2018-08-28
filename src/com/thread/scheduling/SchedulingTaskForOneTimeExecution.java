@@ -3,6 +3,7 @@ package com.thread.scheduling;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Timer;
+import java.util.concurrent.TimeUnit;
 
 import com.thread.common.ScheduledTaskA;
 import com.thread.utils.TimerUtils;
@@ -10,11 +11,11 @@ import com.thread.utils.TimerUtils;
 public class SchedulingTaskForOneTimeExecution {
 	private static SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss.SSS");
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		String currentThread = Thread.currentThread().getName();
 		System.out.println("[" + currentThread + "] Main Thread Starts");
 
-		Timer timer = new Timer("Timer-Thread", false);//If true Daemon mode else user mode
+		Timer timer = new Timer("Timer-Thread", true);//If true Daemon mode else user mode
 		Date currTime = new Date();
 		Date scheduledTime = TimerUtils.getFutureTime(currTime, 5000);
 		
@@ -47,6 +48,12 @@ public class SchedulingTaskForOneTimeExecution {
 		timer.schedule(task4, scheduledTime2);
 		System.out.println("[" + currentThread + "] Task -4 scheduled to run at a specific time:"
 				+ dateFormat.format(new Date(task4.scheduledExecutionTime())));
+
+		//**********************************************************************/
+		TimeUnit.MILLISECONDS.sleep(32000);
+		System.out.println("Cancelling the Timer");
+		timer.cancel();
+		
 
 		
 		System.out.println("[" + currentThread + "] Main Thread Ends");
